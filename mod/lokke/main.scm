@@ -251,6 +251,7 @@ terminator."
   (lokke-run args lok-usage))
 
 (define (run-script args usage)
+  (format (current-error-port) "script: ~s\n" args)
   (when (< (length args) 3)
     (display (usage) (err))
     (quit-early "lokke: script argument ~s not followed by path\n" (cadr args)))
@@ -296,6 +297,7 @@ terminator."
   (exit (lokke-run (cdr args) lok-usage)))
 
 (define (lokke-main args)
+  (format (current-error-port) "main: ~s\n" args)
   (exit (let* ((len (length args))
                (args (if (< len 2) (cons* (car args) "run" (cdr args)) args))
                (cmd (cadr args)))

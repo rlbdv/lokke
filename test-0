@@ -1,0 +1,4 @@
+#!./lokke -0  ;; -*-clojure-*-
+!#
+
+(prn :yep)
