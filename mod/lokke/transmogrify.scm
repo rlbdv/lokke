@@ -65,6 +65,9 @@
    ((null? (meta orig)) maybe-new)  ;; FIXME: do we want to include '()?
    (else ((@@ (lokke metadata) with-meta) maybe-new (meta orig)))))
 
+;; FIXME: docs
+;; FIXME: why do we want/need the uninstantiator compound key?
+
 (define instantiators (make-fluid (make-hash-table eq?)))
 (define uninstantiators (make-fluid '()))
 
@@ -166,6 +169,7 @@
 (define (clj-instances->literals expr)
   ;; This also converts seqs to scheme lists
   (define (convert expr)
+    (format (current-error-port) "convert: ~s ~s\n" expr (hash-set? expr))
     (preserve-meta-if-new!
      expr
      (cond

@@ -343,6 +343,7 @@
 (define (some f coll)
   (let loop ((rst coll))
     (when-let (s (seq rst))
+              ;; FIXME: explicit invoke?
               (if-let (v (invoke f (first s)))
                       v
                       (loop (rest s))))))

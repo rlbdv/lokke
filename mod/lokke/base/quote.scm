@@ -92,6 +92,8 @@
       ((_ nil) (eq? #nil (syntax->datum #'nil))
        #nil)
 
+      ;; ... hmm, could this be #`(%scm-quote #,(map (lambda (e) #`(quote #,e)) #'(exp ...)))
+      ;; and if that breaks things, is it broken, or do those things need adjustment?
       ((_ (exp ...)) #`(list #,@(map (lambda (e) #`(clj-quote #,e)) #'(exp ...))))
 
       ;; "leaf" value, including ()

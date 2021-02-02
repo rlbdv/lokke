@@ -32,6 +32,8 @@
                seq)
   #:duplicates (merge-generics replace warn-override-core warn last))
 
+;; Should these support metadata?
+
 (define-class <map-entry> (<sequential>)
   (k #:init-keyword #:k)
   (v #:init-keyword #:v))
